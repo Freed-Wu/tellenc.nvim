@@ -1,4 +1,4 @@
-﻿// vim: expandtab shiftwidth=4 softtabstop=4 tabstop=4
+// vim: expandtab shiftwidth=4 softtabstop=4 tabstop=4
 
 /*
  * Copyright (C) 2006-2016 Wu Yongwei <wuyongwei@gmail.com>
@@ -548,45 +548,10 @@ const char* tellenc_simplify(const char* const buffer, const size_t len)
     return enc;
 }
 
-static void usage()
+extern "C" const char __cdecl *tellenc(const char* buffer, size_t len, bool verbose)
 {
-    fprintf(stderr, "Usage: tellenc [-v] <filename> \n");
-}
-
-int __cdecl main(int argc, char* argv[])
-{
-    const char* filename;
-    if (argc == 3 && strcmp(argv[1], "-v") == 0) {
-        verbose = true;
-    }
-    if (argc != 2 && !verbose) {
-        usage();
-        exit(EXIT_FAILURE);
-    }
-    if (verbose) {
-        filename = argv[2];
-    } else {
-        filename = argv[1];
-    }
-
-    FILE* fp = fopen(filename, "rb");
-    if (fp == NULL) {
-        fprintf(stderr, "Cannot open file `%s': %s \n",
-                        filename, strerror(errno));
-        exit(EXIT_FAILURE);
-    }
-
-    char buffer[TELLENC_BUFFER_SIZE];
-    size_t len;
-    len = fread(buffer, 1, sizeof buffer, fp);
-    fclose(fp);
-
     init_utf8_char_table();
-    if (const char* enc = tellenc_simplify(buffer, len)) {
-        puts(enc);
-    } else {
-        puts("unknown");
-    }
-
-    return 0;
+    if (const char* enc = tellenc_simplify(buffer, len))
+        return enc;
+    return NULL;
 }

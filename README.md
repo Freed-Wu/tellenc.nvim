@@ -1,78 +1,36 @@
-# tellenc
+# tellenc.nvim
 
-## Overview
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/Freed-Wu/tellenc.nvim/main.svg)](https://results.pre-commit.ci/latest/github/Freed-Wu/tellenc.nvim/main)
+[![github/workflow](https://github.com/Freed-Wu/tellenc.nvim/actions/workflows/main.yml/badge.svg)](https://github.com/Freed-Wu/tellenc.nvim/actions)
 
-Tellenc is program to detect the encoding of a text file.  Its usage is
-very simple:
+[![github/downloads](https://shields.io/github/downloads/Freed-Wu/tellenc.nvim/total)](https://github.com/Freed-Wu/tellenc.nvim/releases)
+[![github/downloads/latest](https://shields.io/github/downloads/Freed-Wu/tellenc.nvim/latest/total)](https://github.com/Freed-Wu/tellenc.nvim/releases/latest)
+[![github/issues](https://shields.io/github/issues/Freed-Wu/tellenc.nvim)](https://github.com/Freed-Wu/tellenc.nvim/issues)
+[![github/issues-closed](https://shields.io/github/issues-closed/Freed-Wu/tellenc.nvim)](https://github.com/Freed-Wu/tellenc.nvim/issues?q=is%3Aissue+is%3Aclosed)
+[![github/issues-pr](https://shields.io/github/issues-pr/Freed-Wu/tellenc.nvim)](https://github.com/Freed-Wu/tellenc.nvim/pulls)
+[![github/issues-pr-closed](https://shields.io/github/issues-pr-closed/Freed-Wu/tellenc.nvim)](https://github.com/Freed-Wu/tellenc.nvim/pulls?q=is%3Apr+is%3Aclosed)
+[![github/discussions](https://shields.io/github/discussions/Freed-Wu/tellenc.nvim)](https://github.com/Freed-Wu/tellenc.nvim/discussions)
+[![github/milestones](https://shields.io/github/milestones/all/Freed-Wu/tellenc.nvim)](https://github.com/Freed-Wu/tellenc.nvim/milestones)
+[![github/forks](https://shields.io/github/forks/Freed-Wu/tellenc.nvim)](https://github.com/Freed-Wu/tellenc.nvim/network/members)
+[![github/stars](https://shields.io/github/stars/Freed-Wu/tellenc.nvim)](https://github.com/Freed-Wu/tellenc.nvim/stargazers)
+[![github/watchers](https://shields.io/github/watchers/Freed-Wu/tellenc.nvim)](https://github.com/Freed-Wu/tellenc.nvim/watchers)
+[![github/contributors](https://shields.io/github/contributors/Freed-Wu/tellenc.nvim)](https://github.com/Freed-Wu/tellenc.nvim/graphs/contributors)
+[![github/commit-activity](https://shields.io/github/commit-activity/w/Freed-Wu/tellenc.nvim)](https://github.com/Freed-Wu/tellenc.nvim/graphs/commit-activity)
+[![github/last-commit](https://shields.io/github/last-commit/Freed-Wu/tellenc.nvim)](https://github.com/Freed-Wu/tellenc.nvim/commits)
+[![github/release-date](https://shields.io/github/release-date/Freed-Wu/tellenc.nvim)](https://github.com/Freed-Wu/tellenc.nvim/releases/latest)
 
-    tellenc [-v] <filename>
+[![github/license](https://shields.io/github/license/Freed-Wu/tellenc.nvim)](https://github.com/Freed-Wu/tellenc.nvim/blob/main/LICENSE)
+[![github/languages](https://shields.io/github/languages/count/Freed-Wu/tellenc.nvim)](https://github.com/Freed-Wu/tellenc.nvim)
+[![github/languages/top](https://shields.io/github/languages/top/Freed-Wu/tellenc.nvim)](https://github.com/Freed-Wu/tellenc.nvim)
+[![github/directory-file-count](https://shields.io/github/directory-file-count/Freed-Wu/tellenc.nvim)](https://github.com/Freed-Wu/tellenc.nvim)
+[![github/code-size](https://shields.io/github/languages/code-size/Freed-Wu/tellenc.nvim)](https://github.com/Freed-Wu/tellenc.nvim)
+[![github/repo-size](https://shields.io/github/repo-size/Freed-Wu/tellenc.nvim)](https://github.com/Freed-Wu/tellenc.nvim)
+[![github/v](https://shields.io/github/v/release/Freed-Wu/tellenc.nvim)](https://github.com/Freed-Wu/tellenc.nvim)
 
-One file name should be provided, and a ‘-v’ option can be used to make
-tellenc to generate verbose output, which may help the user know how it
-is working and provide clues about extending the program.  It currently
-detects the following encodings:
+[![luarocks](https://img.shields.io/luarocks/v/Freed-Wu/tellenc.nvim)](https://luarocks.org/modules/Freed-Wu/tellenc.nvim)
 
-- ASCII,
-- UTF-8
-- UTF-16/32 (little-endian or big-endian)
-- Latin1
-- Windows-1250
-- Windows-1252
-- CP437
-- GB2312
-- GBK
-- Big5
-- SJIS
-- EUC-JP
-- EUC-KR
-- KOI8-R
+Transport [tellenc](https://github.com/adah1972/tellenc) to neovim.
 
-## Extending tellenc
-
-Extending this program should be easy.  Here are the steps:
-
-1. Find some text representative of the language
-2. Save the text in the appropriate legacy encoding
-3. Run tellenc with the ‘-v’ option and the text file created above
-4. Look into the output and choose the double-bytes that appear in high
-   frequency and are also unique (not already in `freq_analysis_data` in
-   the source code)
-5. Add the value pair `{ code, encoding_name }` to
-   `freq_analysis_data` in the source code
-
-You are welcome to send me patches.  Be sure to send me the test text
-file, too.
-
-## Building tellenc
-
-Tellenc only requires a C++98-conformant compiler, and there are no
-other library dependencies.  Here are a few possible command lines for
-different compilers.
-
-MSVC (Windows):
-
-    cl /EHsc /Ox tellenc.cpp
-
-GCC (Linux):
-
-    g++ -O2 tellenc.cpp -o tellenc -s
-
-Clang (Mac):
-
-    clang++ -O2 tellenc.cpp -o tellenc
-
-Previously I could get a very small executable with MSVC 6 + STLport
-4.5.1:
-
-    cl /Ox /GX /Gr /G6 /MD /D_STLP_NO_IOSTREAMS tellenc.cpp /link /opt:nowin98
-
-However, MSVC 6 is just too obsolete, and it does not accept the UTF-8
-BOM character.  I no longer maintain this build environment.
-
-I can still get a quite small Windows executable with MSVC 7.1 + STLport
-5.1.0 (size is less than half that of the executable generated by a more
-modern compiler, if the result only depends on system DLLs):
-
-    cl /Ox /GX /Gr /G7 /D_STLP_NO_IOSTREAMS tellenc.cpp /link /opt:nowin98
-
-It probably does not matter, unless you like small sizes very much.  :-)
+It uses tellenc's lua port to detect a file's encoding, then run `edit
+++filencoding=ENCODING` in vim. If the detection is invalid, run the command by
+yourself according to your guessed encoding.
