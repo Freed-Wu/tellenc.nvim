@@ -29,7 +29,7 @@
 
 [![luarocks](https://img.shields.io/luarocks/v/Freed-Wu/tellenc.nvim)](https://luarocks.org/modules/Freed-Wu/tellenc.nvim)
 
-Transport [tellenc](https://github.com/adah1972/tellenc) to neovim.
+Transplant [tellenc](https://github.com/adah1972/tellenc) to neovim.
 
 It uses tellenc's lua port to detect a file's encoding, then run `edit
 ++filencoding=ENCODING` in vim. If the detection is invalid, run the command by
