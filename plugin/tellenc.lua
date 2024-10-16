@@ -14,6 +14,9 @@ vim.api.nvim_create_autocmd("BufEnter", {
         end
         local text = fd:read()
         fd:close()
+        if text == nil then
+            return
+        end
         local enc = require "tellenc".tellenc(text, #text, false)
         local encs = {
             ascii = "utf-8",
