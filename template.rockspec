@@ -33,5 +33,5 @@ end
 
 build = {
   type = 'xmake',
-  copy_directories = $copy_directories,
+  copy_directories = {'scripts', 'plugin'},
 }
