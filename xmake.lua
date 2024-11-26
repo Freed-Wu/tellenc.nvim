@@ -6,4 +6,5 @@ target("tellenc")
 do
     add_rules("luarocks.module")
     add_files("*.c", "*.cpp")
+    add_links("stdc++")
 end
