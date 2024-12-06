@@ -1,3 +1,5 @@
+*.nobj.c
+*.nobj.ffi.lua
 *.out
 compile_commands.json
 

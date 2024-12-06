@@ -1,6 +1,7 @@
 #ifndef TELLENC_H
 #define TELLENC_H 1
 #include <stdlib.h>
+#include <stdbool.h>
 #include <sys/cdefs.h>
 __BEGIN_DECLS
 
