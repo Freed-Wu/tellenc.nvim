@@ -550,6 +550,7 @@ const char* tellenc_simplify(const char* const buffer, const size_t len)
 
 extern "C" const char __cdecl *tellenc(const char* buffer, size_t len, bool verbose)
 {
+    ::verbose = verbose;
     init_utf8_char_table();
     if (const char* enc = tellenc_simplify(buffer, len))
         return enc;
