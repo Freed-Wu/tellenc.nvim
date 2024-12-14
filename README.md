@@ -1,5 +1,6 @@
 # tellenc.nvim
 
+[![readthedocs](https://shields.io/readthedocs/tellenc-nvim)](https://tellenc-nvim.readthedocs.io)
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/Freed-Wu/tellenc.nvim/main.svg)](https://results.pre-commit.ci/latest/github/Freed-Wu/tellenc.nvim/main)
 [![github/workflow](https://github.com/Freed-Wu/tellenc.nvim/actions/workflows/main.yml/badge.svg)](https://github.com/Freed-Wu/tellenc.nvim/actions)
 
