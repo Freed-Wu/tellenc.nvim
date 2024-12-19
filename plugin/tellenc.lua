@@ -30,6 +30,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
         if enc == "binary" or enc == "unknown" or enc == vim.o.fileencoding then
             return
         end
-        vim.cmd.edit("++encoding=" .. enc)
+        -- https://github.com/neovim/neovim/issues/21687
+        vim.cmd("edit ++encoding=" .. enc)
     end,
 })
