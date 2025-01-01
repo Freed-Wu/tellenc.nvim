@@ -7,7 +7,7 @@ build:
   tools:
     python: "3"
   commands:
-    - asdf plugin add luajit
-    - asdf install luajit latest
+    - asdf plugin add lua
+    - asdf install lua 5.1
     - luarocks install ldoc
     - ldoc .
