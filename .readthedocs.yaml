@@ -7,6 +7,7 @@ build:
   tools:
     python: "3"
   commands:
-    - pip install hererocks
-    - hererocks ~/lua -l5.1 -rlatest
-    - scripts/ldoc.sh
+    - asdf plugin add luajit
+    - asdf install luajit latest
+    - luarocks install ldoc
+    - ldoc .
