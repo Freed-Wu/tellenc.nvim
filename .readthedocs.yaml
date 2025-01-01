@@ -9,6 +9,6 @@ build:
   commands:
     - asdf plugin add lua
     - asdf install lua 5.1
-    - PATH="$HOME/.asdf/installs/lua/5.1/luarocks/bin${PATH:+:}$PATH"
+    # full path can tell luarocks lua version
     - ~/.asdf/installs/lua/5.1/luarocks/bin/luarocks install ldoc
-    - ldoc .
+    - ~/.asdf/installs/lua/5.1/luarocks/bin/ldoc .
