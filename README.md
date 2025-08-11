@@ -32,9 +32,9 @@
 
 Transplant [tellenc](https://github.com/adah1972/tellenc) to neovim.
 
-It uses tellenc's lua port to detect a file's encoding, then run `edit
-++filencoding=ENCODING` in vim. If the detection is invalid, run the command by
-yourself according to your guessed encoding.
+It uses tellenc's lua port to detect a file's encoding, then run
+`edit ++filencoding=ENCODING` in vim. If the detection is invalid, run the
+command by yourself according to your guessed encoding.
 
 ## Install
 
@@ -71,6 +71,6 @@ $ luarocks --lua-version 5.1 --local --tree ~/.local/share/nvim/rocks install te
 
 ## Similar Projects
 
-- [vim-fencview](https://github.com/Freed-Wu/vim-fencview): contains a detect
+- [vim-fencview](https://github.com/mbbill/fencview): contains a detect
   mechanism written in vim script and allow user to use external program like
   tellenc
